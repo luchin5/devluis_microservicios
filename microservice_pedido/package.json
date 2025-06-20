@@ -1,0 +1,25 @@
+{
+  "name": "api_pedido_detalle",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@turf/turf": "^7.1.0",
+    "amqplib": "^0.10.5",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.7",
+    "pg-promise": "^11.10.1",
+    "socket.io": "^4.7.5"
+  },
+  "description": ""
+}

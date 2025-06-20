@@ -1,0 +1,240 @@
+version: "3.9"
+
+services:
+  api_gateway:
+    image: luis101590/demo_api_gateway:latest  # Apunta a la imagen subida a Docker Hub
+    ports:
+      - "8082:3000"
+    depends_on:
+      #- redis
+      #- rabbitmq
+      - microservice_auth
+      - microservice_cliente
+      - microservice_pedido
+      - microservice_zonaproducto
+      - microservice_zonapromocion
+      - microservice_producto
+      - microservice_conductor
+      - microservice_ubicacion
+      - microservice_notificacion
+      - microservice_almacen
+      - microservice_categoria
+      - microservice_novedades
+      - microservice_publicidad
+      - microservice_codigo
+    networks:
+      - microservices_network
+    #environment:
+    #  - REDIS_HOST=redis
+    #  - REDIS_PORT=6379
+      #- RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672
+    env_file:
+      - ./api_gateway/.env  # Ruta del archivo .env para api_gateway
+
+  #rabbitmq:
+  #  image: rabbitmq:3-management
+  #  ports:
+  #    - "5672:5672" # Puerto para comunicación AMQP
+  #    - "15672:15672" # Puerto para la interfaz de administración
+  #  networks:
+  #    - microservices_network
+  #  environment:
+  #    - RABBITMQ_DEFAULT_USER=guest
+  #    - RABBITMQ_DEFAULT_PASS=guest
+#
+  #redis:
+  #  image: redis:7.0
+  #  ports:
+  #    - "6379:6379"
+  #  networks:
+  #    - microservices_network
+
+  microservice_notificacion:
+    image: luis101590/demo_microservice_notificacion:latest
+    ports:
+      - "5013:5013"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_notificacion/.env
+
+  microservice_almacen:
+    image: luis101590/demo_microservice_almacen:latest
+    ports:
+      - "5003:5003"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_almacen/.env
+
+  microservice_ubicacion:
+    image: luis101590/demo_microservice_ubicacion:latest
+    ports:
+      - "5005:5005"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_ubicacion/.env
+
+  microservice_pedido:
+    image: luis101590/demo_microservice_pedido:latest  # Apunta a la imagen subida a Docker Hub
+    ports:
+      - "5010:5010"
+    #depends_on:
+    #  - rabbitmq
+    deploy:
+      replicas: 1 # Se definen 3 réplicas para este servicio
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    #environment:
+    #  - RABBITMQ_URL=amqp://admin:admin123@64.23.206.83:5673
+    env_file:
+      - ./microservice_pedido/.env
+
+  microservice_producto:
+    image: luis101590/demo_microservice_producto:latest  # Apunta a la imagen subida a Docker Hub
+    ports:
+      - "5004:5004"
+    deploy:
+      replicas: 1 # Se definen 3 réplicas para este servicio
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_producto/.env
+
+  microservice_zonaproducto:
+    image: luis101590/demo_microservice_zonaproducto:latest  # Apunta a la imagen subida a Docker Hub
+    ports:
+      - "5006:5006"
+    deploy:
+      replicas: 1 # Se definen 3 réplicas para este servicio
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_zonaproducto/.env
+
+  microservice_zonapromocion:
+    image: luis101590/demo_microservice_zonapromocion:latest  # Apunta a la imagen subida a Docker Hub
+    ports:
+      - "5007:5007"
+    deploy:
+      replicas: 1 # Se definen 3 réplicas para este servicio
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_zonapromocion/.env
+
+  microservice_cliente:
+    image: luis101590/demo_microservice_cliente:latest  # Apunta a la imagen subida a Docker Hub
+    ports:
+      - "5002:5002"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_cliente/.env
+
+  microservice_conductor:
+    image: luis101590/demo_microservice_conductor:latest  # Apunta a la imagen subida a Docker Hub
+    ports:
+      - "5009:5009"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_conductor/.env
+
+  microservice_auth:
+    image: luis101590/demo_microservice_auth:latest  # Apunta a la imagen subida a Docker Hub
+    ports:
+      - "5001:5001" # HOST : CONTENEDOR -> También puede ser - 5004 para resumir, por la igualdad de puertos
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_auth/.env
+
+  microservice_categoria:
+    image: luis101590/demo_microservice_categoria:latest  
+    ports:
+      - "5011:5011" 
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_categoria/.env 
+
+  microservice_novedades:
+    image: luis101590/demo_microservice_novedades:latest  
+    ports:
+      - "5017:5017" 
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_novedades/.env 
+
+  microservice_publicidad:
+    image: luis101590/demo_microservice_publicidad:latest  
+    ports:
+      - "5014:5014" 
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_publicidad/.env 
+
+  microservice_codigo:
+    image: luis101590/demo_microservice_codigo:latest  
+    ports:
+      - "5016:5016" 
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - microservices_network
+    env_file:
+      - ./microservice_codigo/.env 
+
+networks:
+  microservices_network:
+    driver: overlay

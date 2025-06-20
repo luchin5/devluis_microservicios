@@ -1,0 +1,10 @@
+INSERT INTO public.almacen(nombre,latitud,longitud,horario,departamento,provincia,direccion) VALUES
+('Almacen A',-16.755,-75.48418,'8am-5pm','Arequipa','Arequipa','Fátima'),
+('Almacen B',-16.755,-75.48418,'8am-5pm','Arequipa','Arequipa','Selva Alegre'),
+('Almacen C',-16.755,-75.48418,'8am-5pm','Arequipa','Arequipa','Paucarpata'),
+('Almacen D',-16.755,-75.48418,'8am-5pm','Moquegua','Moquegua','Omate'),
+('Almacen E',-16.755,-75.48418,'8am-5pm','Moquegua','Moquegua','Ilo'),
+('Almacen F',-16.755,-75.48418,'8am-5pm','Moquegua','Moquegua','Moquegua'),
+('Almacen G',-16.755,-75.48418,'8am-5pm','Lima','Lima','San Juan de Lurigancho'),
+('Almacen H',-16.755,-75.48418,'8am-5pm','Lima','Lima','San Isidro'),
+('Almacen I',-16.755,-75.48418,'8am-5pm','Lima','Lima','Ate'),

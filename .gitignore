@@ -1,0 +1,20 @@
+# Ignorar los node_modules en cada API
+#api_cliente/node_modules/
+microservice_cliente/node_modules/
+api_gateway/node_modules/
+microservice_pedido/node_modules/
+microservice_auth/node_modules/
+microservice_publicidad/node_modules/
+microservice_almacen/node_modules/
+microservice_categoria/node_modules/
+microservice_notificacion/node_modules/
+microservice_pago/node_modules/
+microservice_producto/node_modules/
+microservice_ubicacion/node_modules/
+microservice_vehiculo/node_modules/
+microservice_zonaproducto/node_modules/
+microservice_zonapromocion/node_modules/
+microservice_conductor/node_modules/
+microservice_codigo/node_modules/
+microservice_novedades/node_modules/
+
