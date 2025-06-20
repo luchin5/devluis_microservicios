@@ -9,5 +9,6 @@ que tiene conectada su propia base de datos en POSTGRESQL . Además de ello cuen
 Luego de ello se despliega en el VPS de digital ocean llamado DROPLET con ubuntu - linux , mediante DOCKER SWARM y el archivo YML en la raíz del mismo.
 El enfoque que tiene es RAW , ya que tiene sentencias SQL directas.
 
+Utilice en todo el proyecto el patrón arquitectónico MVC( MODELO - VISTA - CONTROLADOR ) Siendo la vista otorgada por FLUTTER .
 ### Gracias por ver.
 ![expressjs](https://github.com/user-attachments/assets/04a42795-caa5-4eff-a360-4b446ba2b5b4)
